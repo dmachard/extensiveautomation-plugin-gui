@@ -1670,10 +1670,8 @@ class Selenium(TestAdapterLib.Adapter):
 		else:
 			elementVall = rsp.get('GUI',  'value')
 			elementId = elementVall.get('element-id')
-			
-			self.warning( "ok: type(%s)" % type(text) )
+
 			cmdId = self.typeTextElement(elementId=elementId, text=str(text) )
-			self.warning( "ok2" )
 			if self.hasTextEntered(timeout=timeout, commandId=cmdId)  is None:
 				ret = False
 		return ret
