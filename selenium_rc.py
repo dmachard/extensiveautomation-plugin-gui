@@ -30,6 +30,10 @@ import TestExecutorLib.TestExecutorLib as TestExecutor
 import sys
 import base64
 
+# unicode = str with python3
+if sys.version_info > (3,):
+	unicode = str
+
 from Libs.PyXmlDict import Xml2Dict
 from Libs.PyXmlDict import Dict2Xml
 
@@ -1667,7 +1671,9 @@ class Selenium(TestAdapterLib.Adapter):
 			elementVall = rsp.get('GUI',  'value')
 			elementId = elementVall.get('element-id')
 			
+			self.warning( "ok: type(%s)" % type(text) )
 			cmdId = self.typeTextElement(elementId=elementId, text=str(text) )
+			self.warning( "ok2" )
 			if self.hasTextEntered(timeout=timeout, commandId=cmdId)  is None:
 				ret = False
 		return ret
@@ -3358,7 +3364,8 @@ class Selenium(TestAdapterLib.Adapter):
 		@return: internal command id
 		@rtype: string
 		"""
-		text = unicode(text, 'utf8')
+		if sys.version_info < (3,):
+			text = unicode(text, 'utf8')
 		typing = []
 		for val in text:
 			if isinstance(val, Keys):
