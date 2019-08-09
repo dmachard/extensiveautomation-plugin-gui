@@ -21,22 +21,16 @@
 # MA 02110-1301 USA
 # -------------------------------------------------------------------
 
-import TestExecutorLib.TestValidatorsLib as TestValidatorsLib
-import TestExecutorLib.TestTemplatesLib as TestTemplatesLib
-import TestExecutorLib.TestOperatorsLib as TestOperatorsLib
-import TestExecutorLib.TestAdapterLib as TestAdapterLib
-
 import sys
 import threading
 import uuid
 
-from Libs.PyXmlDict import Xml2Dict
-from Libs.PyXmlDict import Dict2Xml
+from ea.testexecutorlib import TestValidatorsLib
+from ea.testexecutorlib import TestTemplatesLib
+from ea.testexecutorlib import TestOperatorsLib
+from ea.testexecutorlib import TestAdapterLib
 
-try:
-	import templates
-except ImportError: # python3 support
-	from . import templates
+from ea.sutadapters.GUI import templates
 
 __NAME__="""Sikuli"""
 
@@ -184,8 +178,6 @@ class Sikuli(TestAdapterLib.Adapter):
 																										caller=TestAdapterLib.caller(),
 																										agentType=AGENT_TYPE_EXPECTED)
 		self.parent = parent
-		self.codecX2D = Xml2Dict.Xml2Dict()
-		self.codecD2X = Dict2Xml.Dict2Xml(coding = None)
 		self.__mutexActionId__ = threading.RLock()
 		self.actionId = 0
 		

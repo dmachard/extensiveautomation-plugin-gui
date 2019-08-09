@@ -7,17 +7,35 @@ Introduction
 This plugin enable to interact with user interface 
 Selenium, sikulix or adb for android mobile are used to do that.
 
+Installing from pypi
+--------------------
+
+1. Run the following command
+
+        pip install extensiveautomation_plugin_gui
+
+2. Execute the following command to take in account this new plugin
+
+        ./extensiveautomation --reload
+        
+3. If you want some examples, you can take a look to the samples provided in the `Samples` folder.
 
 Installing from source
 ----------------------
 
-1. Go to the folder `/home/extensiveautomation/Var/SutAdapters` in your ExtensiveAutomation server  
-
 1. Clone the following repository 
 
-        git clone https://github.com/ExtensiveAutomation/extensiveautomation-plugin-gui.git GUI
+        git clone https://github.com/ExtensiveAutomation/extensiveautomation-plugin-gui.git
   
-3. Finally execute the following command to install depandencies
+2. Copy the folder `sutadapters` to /home/extensiveautomation/ and overwrite-it
+
+        cp -rf sutadapters /home/extensiveautomation/
+        
+3. Copy the folder `var` to /home/extensiveautomation/ and overwrite-it
+
+        cp -rf var /home/extensiveautomation/
+        
+4. Finally execute the following command to install depandencies
 
         cd /home/extensiveautomation/
-        python extensiveautomation --install_adapter GUI
+        python extensiveautomation.py --install_adapter GUI

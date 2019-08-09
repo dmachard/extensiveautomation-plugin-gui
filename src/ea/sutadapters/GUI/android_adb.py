@@ -21,22 +21,17 @@
 # MA 02110-1301 USA
 # -------------------------------------------------------------------
 
-import TestExecutorLib.TestValidatorsLib as TestValidators
-import TestExecutorLib.TestTemplatesLib as TestTemplates
-import TestExecutorLib.TestOperatorsLib as TestOperators
-import TestExecutorLib.TestAdapterLib as TestAdapterLib
-
 import sys
 import threading
 import json
 
-try:
-	import templates
-except ImportError: # python3 support
-	from . import templates
+from ea.testexecutorlib import TestValidatorsLib as TestValidators
+from ea.testexecutorlib import TestTemplatesLib as TestTemplates
+from ea.testexecutorlib import TestOperatorsLib as TestOperators
+from ea.testexecutorlib import TestAdapterLib as TestAdapterLib
 
-from Libs.PyXmlDict import Xml2Dict
-from Libs.PyXmlDict import Dict2Xml
+from ea.sutadapters.GUI import templates
+
 
 __NAME__="""ADB"""
 
@@ -224,8 +219,6 @@ class Adb(TestAdapterLib.Adapter):
 																										caller=TestAdapterLib.caller(),
 																										agentType=AGENT_TYPE_EXPECTED)
 		self.parent = parent
-		self.codecX2D = Xml2Dict.Xml2Dict()
-		self.codecD2X = Dict2Xml.Dict2Xml(coding = None)
 		self.cfg = {}
 		self.cfg['agent'] = agent
 		self.cfg['agent-name'] = agent['name']
