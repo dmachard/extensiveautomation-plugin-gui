@@ -661,7 +661,8 @@ class Sikuli(TestAdapterLib.Adapter):
 		@rtype: string	
 		"""
 		action =  ACTION_GET_TEXT
-		
+		actionId = self.getActionId()
+        
 		#generate rando name
 		imgName = "%s" % uuid.uuid4()
 		mainImgName =  "%s" % uuid.uuid4()
@@ -966,7 +967,7 @@ class Sikuli(TestAdapterLib.Adapter):
 		if mainImg is not None:
 			if timeout is not None:
 				code.append( '\tmainRegion = find(Pattern("%s.png").similar(%s))' % (mainImgName, similar) )
-				code.append( '\tmainRegion.wait(Pattern("%s.png").similar(%s), %s)' % (mgName, similar, self.getTimeout(timeout)) )
+				code.append( '\tmainRegion.wait(Pattern("%s.png").similar(%s), %s)' % (imgName, similar, self.getTimeout(timeout)) )
 			else:
 				code.append( '\tmainRegion = find(Pattern("%s.png").similar(%s))' % (mainImgName, similar) )
 				code.append( '\tmainRegion.find(Pattern("%s.png").similar(%s))' % (imgName, similar) )

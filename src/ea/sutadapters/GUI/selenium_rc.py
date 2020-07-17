@@ -24,6 +24,7 @@
 import sys
 import base64
 import threading
+import time
 
 from selenium.webdriver.remote.command import Command
 from selenium.webdriver.remote.webelement import WebElement
@@ -38,6 +39,11 @@ from selenium import webdriver
 if sys.version_info > (3,):
 	unicode = str
 
+try:
+    xrange
+except NameError:  # support python3
+    xrange = range
+    
 from ea.testexecutorlib import TestValidatorsLib as TestValidators
 from ea.testexecutorlib import TestTemplatesLib as TestTemplates
 from ea.testexecutorlib import TestOperatorsLib as TestOperators
