@@ -18,7 +18,7 @@ Installing from pypi
 
         ./extensiveautomation --reload
         
-3. If you want some examples, you can take a look to the samples provided in the `Samples` folder.
+3. Samples are deployed on data storage
 
 Installing from source
 ----------------------
