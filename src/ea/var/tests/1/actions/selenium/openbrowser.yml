@@ -1,0 +1,55 @@
+properties:
+  parameters:
+    - name: agent
+      value:
+        name: agent
+        type: selenium3
+    - name: debug
+      value: false
+    - name: timeout
+      value: 25
+    - name: url
+      value: https://www.extensiveautomation.org
+    - name: browser
+      value: chrome
+      description: chrome firefox edge
+python: |
+    class SeleniumAction(Action):
+        def definition(self):
+            self.ADP_GUI_BROWSER = SutAdapters.GUI.Selenium(parent=self,
+                                                            agent=input('agent'),
+                                                            debug=input('debug'))
+            
+            
+            if input('url') is None:
+                self.abort("no url provided")
+            if not len(input('url')):
+                self.abort("no url provided")
+                
+            useFirefox = False
+            useChrome = False
+            useEdge = False
+            if input('browser') == "chrome":
+                useChrome = True
+            if input('browser') == "firefox":
+                useFirefox = True
+            if input('browser') == "edge":
+                useEdge = True
+            
+            self.warning("> opening %s and load url %s" % (input('browser'), input('url')))
+            ret_action = self.ADP_GUI_BROWSER.doOpen(timeout=input('timeout'), 
+                                                     targetUrl=input('url'), 
+                                                     withFirefox=useFirefox, 
+                                                     withChrome=useChrome,
+                                                     withEdge=useEdge, 
+                                                     useMarionette=True, 
+                                                     sessionName="default",
+                                                     browserProfile=None )
+            if not ret_action:
+                self.abort("< unable to open browser and load url")
+            
+            ret_action = self.ADP_GUI_BROWSER.doMaximizeWindow(timeout=input('timeout'))
+            if not ret_action:
+                self.abort("< unable to maximize browser")
+            self.warning("< %s opened" % input('browser'))  
+    SeleniumAction().execute()

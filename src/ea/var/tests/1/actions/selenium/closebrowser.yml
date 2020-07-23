@@ -1,0 +1,24 @@
+properties:
+  parameters:
+    - name: agent
+      value:
+        name: agent
+        type: selenium3
+    - name: debug
+      value: false
+    - name: timeout
+      value: 25
+python: |
+    class SeleniumAction(Action):
+        def definition(self):
+            self.ADP_GUI_BROWSER = SutAdapters.GUI.Selenium(parent=self,
+                                                            agent=input('agent'),
+                                                            debug=input('debug'))
+            
+            self.warning("> closing browser")
+            action_ret = self.ADP_GUI_BROWSER.doClose(timeout=input('timeout'))
+            if not action_ret:
+                self.error('< unable to close browser')
+            self.warning("< closed")
+            
+    SeleniumAction().execute()

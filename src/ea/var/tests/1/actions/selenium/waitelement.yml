@@ -1,0 +1,27 @@
+properties:
+  parameters:
+    - name: agent
+      value:
+        name: agent
+        type: selenium3
+    - name: debug
+      value: false
+    - name: timeout
+      value: 25
+    - name: xpath
+      value: 
+python: |
+    class SeleniumAction(Action):
+        def definition(self):
+            self.ADP_GUI_BROWSER = SutAdapters.GUI.Selenium(parent=self,
+                                                            agent=input('agent'),
+                                                            debug=input('debug'))
+            
+            self.warning("> wait element %s to be visible" % input('xpath'))
+            action_ret = self.ADP_GUI_BROWSER.doWaitVisibleElement(timeout=input('timeout'),
+                                                                   xpath=input('xpath'))
+            if not action_ret:
+                self.error('< unable to find element')
+            else:
+                self.warning("< action successful")
+    SeleniumAction().execute()

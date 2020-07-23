@@ -1,0 +1,117 @@
+properties:
+  parameters:
+    - name: agent
+      value:
+        name: agent
+        type: selenium3
+    - name: browser
+      value: chrome
+actions:
+- description: Generate random string
+  file: Common:actions/generators/random_string.yml
+  id: 1
+  parameters:
+    - name: string-length
+      value: 8
+    - name: with-punctuation
+      value: false
+    - name: cache-key
+      value: random-name
+- description: Generate random string for password
+  file: Common:actions/generators/random_string.yml
+  id: 2
+  parameters:
+    - name: string-length
+      value: 10
+    - name: with-punctuation
+      value: true
+    - name: cache-key
+      value: random-password
+- description: Open browser
+  file: Common:actions/selenium/openbrowser.yml
+  id: 3
+  parameters:
+   - name: url
+     value: https://www.google.com/ncr
+- description: Click on sign-in button
+  file: Common:actions/selenium/clickelement.yml
+  id: 4
+  parent: 3
+  parameters:
+   - name: xpath
+     value: //a[contains(text(), "Sign in")]
+- description: Click on create account button
+  file: Common:actions/selenium/clickelement.yml
+  id: 5
+  parent: 3
+  parameters:
+   - name: xpath
+     value: //span[contains(text(), "Create account")]
+- description: Click on for myself button
+  file: Common:actions/selenium/clickelement.yml
+  id: 6
+  parent: 3
+  parameters:
+   - name: xpath
+     value: //div[contains(text(), "For myself")]
+- description: Type first name
+  file: Common:actions/selenium/typetext.yml
+  id: 7
+  parent: 3
+  parameters:
+   - name: text
+     type: cache
+     value: random-name
+   - name: xpath
+     value: //input[@name="firstName"]
+- description: Type last name
+  file: Common:actions/selenium/typetext.yml
+  id: 8
+  parent: 3
+  parameters:
+   - name: text
+     type: cache
+     value: random-name
+   - name: xpath
+     value: //input[@name="lastName"]
+- description: Type user name
+  file: Common:actions/selenium/typetext.yml
+  id: 7
+  parent: 3
+  parameters:
+   - name: text
+     type: cache
+     value: random-name
+   - name: xpath
+     value: //input[@name="Username"]
+- description: Type password
+  file: Common:actions/selenium/typetext.yml
+  id: 9
+  parent: 3
+  parameters:
+   - name: text
+     type: cache
+     value: random-password
+   - name: xpath
+     value: //input[@name="Passwd"]
+- description: Type password again
+  file: Common:actions/selenium/typetext.yml
+  id: 10
+  parent: 3
+  parameters:
+   - name: text
+     type: cache
+     value: random-password
+   - name: xpath
+     value: //input[@name="ConfirmPasswd"]
+- description: Click on next button
+  file: Common:actions/selenium/clickelement.yml
+  id: 11
+  parent: 3
+  parameters:
+   - name: xpath
+     value: //span[contains(text(), "Next")]
+- description: Close browser
+  file: Common:actions/selenium/closebrowser.yml
+  id: 7
+  parent: 3

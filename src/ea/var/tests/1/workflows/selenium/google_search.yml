@@ -1,0 +1,42 @@
+properties:
+  parameters:
+    - name: agent
+      value:
+        name: agent
+        type: selenium3
+    - name: browser
+      value: chrome
+actions:
+- description: open browser
+  file: Common:actions/selenium/openbrowser.yml
+  id: 1
+  parameters:
+   - name: url
+     value: https://www.google.com
+- description: type text
+  file: Common:actions/selenium/typetext.yml
+  id: 2
+  parent: 1
+  parameters:
+   - name: text
+     value: extensiveautomation
+   - name: xpath
+     value: //input[@name="q"]
+- description: click on the button search
+  file: Common:actions/selenium/clickelement.yml
+  id: 3
+  parent: 1
+  parameters:
+   - name: xpath
+     value: //input[@name="btnK"]
+- description: wait results
+  file: Common:actions/selenium/waitelement.yml
+  id: 4
+  parent: 3
+  parameters:
+   - name: xpath
+     value: //h3[contains(text(), "Extensive Automation - Automation framework")]
+- description: close browser
+  file: Common:actions/selenium/closebrowser.yml
+  id: 5
+  parent: 1

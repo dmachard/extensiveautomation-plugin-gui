@@ -203,7 +203,7 @@ class Selenium(TestAdapterLib.Adapter):
 		Private function
 		"""
 		self.debug("config: %s" % self.cfg)	
-		self.warning('Agent used Name=%s Type=%s' % (self.cfg['agent']['name'], self.cfg['agent']['type']) ) 
+		self.debug('running with agent=%s' % (self.cfg['agent']['name']) ) 
 	
 	def onReset(self):
 		"""
