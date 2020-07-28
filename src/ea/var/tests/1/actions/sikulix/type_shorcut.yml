@@ -1,0 +1,30 @@
+properties:
+  parameters:
+    - name: debug
+      value: false
+    - name: agent
+      value:
+        type: sikulixserver
+        name: agent
+    - name: key
+      value: KEY_WIN
+    - name: other-key
+      value: 
+    - name: timeout
+      value: 15
+python: |
+    class Sikulix(Action):
+        def definition(self):   
+            self.ADP_GUI = SutAdapters.GUI.Sikuli(parent=self, agent=input('agent'), debug=input('debug'))
+            
+            action_id = self.ADP_GUI.typeShorcut(key=getattr(SutAdapters.GUI, input("key")),
+                                                modifier=None,
+                                                special=None,
+                                                other=input('other-key'),
+                                                repeat=0)
+            action_ret = self.ADP_GUI.isActionAccepted(timeout=input('timeout'), actionId=action_id)
+            if action_ret is None:
+                self.abort("Unable to type shortcut")
+            else:
+                self.info("shortcut typed")
+    Sikulix().execute()

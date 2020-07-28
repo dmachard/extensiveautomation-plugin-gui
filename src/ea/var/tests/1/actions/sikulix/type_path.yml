@@ -1,0 +1,24 @@
+properties:
+  parameters:
+    - name: debug
+      value: false
+    - name: agent
+      value:
+        type: sikulixserver
+        name: agent
+    - name: text
+      value: 
+    - name: timeout
+      value: 15
+python: |
+    class Sikulix(Action):
+        def definition(self):   
+            self.ADP_GUI = SutAdapters.GUI.Sikuli(parent=self, agent=input('agent'), debug=input('debug'))
+            
+            action_id = self.ADP_GUI.typePath(text=input("text"))
+            action_ret = self.ADP_GUI.isActionAccepted(timeout=input('timeout'), actionId=action_id)
+            if action_ret is None:
+                self.abort("Unable to type path")
+            else:
+                self.info("text path typed")
+    Sikulix().execute()

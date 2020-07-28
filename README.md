@@ -1,14 +1,20 @@
-GUI plugin for ExtensiveAutomation server
-===================================================
-
-Introduction
-------------
+# GUI plugin for ExtensiveAutomation server
 
 This plugin enable to interact with user interface 
 Selenium, sikulix or adb for android mobile are used to do that.
 
-Installing from pypi
---------------------
+## Table of contents
+* [Installing from pypi](#installing-from-pypi)
+* [Installing from source](#installing-from-source)
+* [About actions](#about-actions)
+    * [Selenium](#selenium)
+        * [selenium/openbrowser.yml](#seleniumopenbrowseryml)
+        * [selenium/closebrowser.yml](#seleniumclosebrowseryml)
+        * [selenium/typetext.yml](#seleniumtypetextyml)
+        * [selenium/waitelement.yml](#seleniumwaitelementyml)
+        * [selenium/clickelement.yml](#seleniumclickelementsyml)
+        
+## Installing from pypi
 
 1. Run the following command
 
@@ -20,8 +26,7 @@ Installing from pypi
         
 3. Samples are deployed on data storage
 
-Installing from source
-----------------------
+## Installing from source
 
 1. Clone the following repository 
 
@@ -39,3 +44,17 @@ Installing from source
 
         cd /home/extensiveautomation/
         python extensiveautomation.py --install_adapter GUI
+        
+## About actions
+
+### Selenium
+
+#### selenium/openbrowser.yml
+
+#### selenium/closebrowser.yml
+
+#### selenium/typetext.yml
+
+#### selenium/waitelement.yml
+
+#### selenium/clickelement.yml

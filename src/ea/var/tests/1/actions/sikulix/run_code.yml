@@ -1,0 +1,24 @@
+properties:
+  parameters:
+    - name: debug
+      value: false
+    - name: agent
+      value:
+        type: sikulixserver
+        name: agent
+    - name: code
+      value: "popup(\"Hello World\")"
+    - name: timeout
+      value: 15
+python: |
+    class Sikulix(Action):
+        def definition(self):   
+            self.ADP_GUI = SutAdapters.GUI.Sikuli(parent=self, agent=input('agent'), debug=input('debug'))
+            actionId = self.ADP_GUI.rawAction(rawCode=input('code'))
+            response = self.ADP_GUI.isActionAccepted(timeout=input('timeout'), actionId=actionId)
+            if not response:
+                self.error("no return")
+            else:
+                out = response.get("GUI", "out")
+                self.info( out )
+    Sikulix().execute()

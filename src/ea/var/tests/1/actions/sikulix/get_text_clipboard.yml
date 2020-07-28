@@ -1,0 +1,27 @@
+properties:
+  parameters:
+    - name: debug
+      value: false
+    - name: agent
+      value:
+        type: sikulixserver
+        name: agent
+    - name: key-cache
+      value: clipboard
+    - name: timeout
+      value: 15
+python: |
+    class Sikulix(Action):
+        def definition(self):   
+            self.ADP_GUI = SutAdapters.GUI.Sikuli(parent=self, agent=input('agent'), debug=input('debug'))
+            
+            action_id = self.ADP_GUI.getTextClipboard()
+            action_ret = self.ADP_GUI.isActionAccepted(timeout=input('timeout'), actionId=action_id)
+            if action_ret is None:
+                self.abort("Unable to type get text from clipboard")
+            else:
+                text = action_ret.get("GUI", "text-result")
+                Cache().set(name=input("key-cache"), data=text)
+                
+                self.info("clipboard text saved on cache")
+    Sikulix().execute()

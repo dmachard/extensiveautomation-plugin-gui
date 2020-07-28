@@ -1,0 +1,73 @@
+properties:
+  parameters:
+    - name: agent
+      value:
+        type: sikulixserver
+        name: agent
+actions:
+- description: Type WIN+r on keyboard 
+  file: Common:actions/sikulix/type_shorcut.yml
+  parameters:
+   - name: key
+     value: KEY_WIN
+   - name: other-key
+     value: r
+- description: "Type text: cmd"
+  file: Common:actions/sikulix/type_text.yml
+  parameters:
+   - name: text
+     value: cmd
+- description: Type ENTER on keyboard
+  file: Common:actions/sikulix/type_shorcut.yml
+  parameters:
+   - name: key
+     value: KEY_ENTER
+- description: Wait 1s
+  file: Common:actions/basic/wait.yml
+  parameters:
+   - name: duration
+     value: 1
+- description: "Type text: cls & ver"
+  file: Common:actions/sikulix/type_text.yml
+  parameters:
+   - name: text
+     value: cls & ver
+- description: Type ENTER on keyboard
+  file: Common:actions/sikulix/type_shorcut.yml
+  parameters:
+   - name: key
+     value: KEY_ENTER
+- description: Type CTRL+a on keyboard 
+  file: Common:actions/sikulix/type_shorcut.yml
+  parameters:
+   - name: key
+     value: KEY_CTRL
+   - name: other-key
+     value: a
+- description: Type CTRL+c on keyboard 
+  file: Common:actions/sikulix/type_shorcut.yml
+  parameters:
+   - name: key
+     value: KEY_CTRL
+   - name: other-key
+     value: c
+- description: Get version from clipboard
+  file: Common:actions/sikulix/get_text_clipboard.yml
+  parameters:
+   - name: key-cache
+     value: clipboard
+- description: "Type text: exit"
+  file: Common:actions/sikulix/type_text.yml
+  parameters:
+   - name: text
+     value: exit
+- description: Type ENTER on keyboard
+  file: Common:actions/sikulix/type_shorcut.yml
+  parameters:
+   - name: key
+     value: KEY_ENTER
+- description: Show version
+  file: Common:actions/cache/log.yml
+  parameters:
+   - name: key
+     value: clipboard
