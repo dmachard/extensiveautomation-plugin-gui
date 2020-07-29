@@ -3,9 +3,7 @@ properties:
     - name: debug
       value: false
     - name: agent
-      value:
-        type: sikulixserver
-        name: agent
+      value: agent01.sikulix
     - name: key
       value: KEY_WIN
     - name: other-key

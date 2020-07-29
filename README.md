@@ -55,7 +55,8 @@ Selenium, sikulix or adb for android mobile are used to do that.
 4. Finally execute the following command to install depandencies
 
         cd /home/extensiveautomation/
-        python extensiveautomation.py --install_adapter GUI
+        python3 extensiveautomation.py --install-adapter GUI
+        python3 extensiveautomation.py --reload
         
 ## About actions
 
@@ -66,7 +67,7 @@ Selenium, sikulix or adb for android mobile are used to do that.
 Open a browser like firefox or chrome
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - url (text): url to load
 - browser (text): type of browser to open (firefox, chrome or edge)
   
@@ -75,14 +76,14 @@ Parameter(s):
 Close the browser
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 
 #### selenium/typetext.yml
 
 Type text on the html element.
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - xpath (text): xpath expression to find the html element
 - text (text): text to send in the element
 
@@ -91,7 +92,7 @@ Parameter(s):
 Wait html element to appear on the page.
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - xpath (text): xpath expression to find the html element
 
 #### selenium/clickelement.yml
@@ -99,7 +100,7 @@ Parameter(s):
 Click on html element.
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - xpath (text): xpath expression to find the html element
 
 ### Sikulix
@@ -109,7 +110,7 @@ Parameter(s):
 Run sikulix code
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - code (text): sikulix code
 
 #### sikulix/type_path.yml
@@ -117,7 +118,7 @@ Parameter(s):
 Type path text
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - text (text): path text
 
 #### selenium/type_text.yml
@@ -125,7 +126,7 @@ Parameter(s):
 Type text
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - text (text): text to send
 
 #### sikulix/type_shortcut.yml
@@ -133,7 +134,7 @@ Parameter(s):
 Send keyboard shorcut
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - key (text): press on key (KEY_WIN, etc..)
 - other-key (text): press on a second key
 
@@ -142,7 +143,7 @@ Parameter(s):
 Get the text from the clipboard
 
 Parameter(s):
-- agent (dict): agent description
+- agent (text): agent name
 - key-cache (text): save result on cache with the provided name
 
 ## About workflows

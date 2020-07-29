@@ -1,9 +1,7 @@
 properties:
   parameters:
     - name: agent
-      value:
-        name: agent
-        type: selenium3
+      value: agent01.selenium
     - name: debug
       value: false
     - name: timeout

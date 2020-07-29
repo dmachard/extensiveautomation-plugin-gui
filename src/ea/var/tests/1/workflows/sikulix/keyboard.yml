@@ -1,9 +1,7 @@
 properties:
   parameters:
     - name: agent
-      value:
-        type: sikulixserver
-        name: agent
+      value: agent01.sikulix
 actions:
 - description: Type WIN+r on keyboard 
   file: Common:actions/sikulix/type_shorcut.yml
